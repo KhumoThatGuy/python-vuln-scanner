@@ -16,4 +16,5 @@ A beginner-friendly network vulnerability scanner built in Python using:
 ## 🚀 How to Use
 
 ```bash
-python3 main.py <target-ip>
+export SHODAN_API_KEY="Actual Shodan API "
+Python3 main.py <target-ip>
