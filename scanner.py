@@ -1,13 +1,17 @@
+import subprocess
+import os
+
 def run_nmap_scan(target):
-    print(f"[+] Scanning target {target} with Nmap...")
     try:
-        # Run Nmap scan with version detection and save output as XML
+        print(f"[+] Scanning target {target} with Nmap...")
         result = subprocess.check_output(
-            ['nmap', '-sV', '-T4', '-oX', 'scan_results.xml', target],
-            stderr=subprocess.STDOUT
+            ["nmap", "-sV", "-oX", "nmap_output.xml", target],
+            stderr=subprocess.STDOUT,
+            text=True
         )
-        print("[+] Scan complete, results saved as scan_results.xml.")
-        return 'scan_results.xml'
+        print("[+] Scan complete. Output saved to nmap_output.xml")
+        return "nmap_output.xml"
     except subprocess.CalledProcessError as e:
-        print(f"[-] Nmap scan failed: {e.output.decode()}")
+        print(f"[-] Nmap scan failed: {e.output}")
         return None
+
